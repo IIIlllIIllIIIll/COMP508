@@ -31,11 +31,11 @@ erDiagram
 
     role |o--o{ staff : "is assigned to"
     role_history }o--|| staff : "was assigned to"
-    staff }|--o| project : "work on"
-    role_history }|--|| project : "worked on"
+    staff }|--o| project : "works on"
+    role_history }|--|| project : "has"
     role |o--o{ role_history : "is in"
-    project ||--|{ construction_site : "work on"
-    construction_site }o--|| roads : "involve"
+    project ||--|{ construction_site : "involves"
+    construction_site }o--|| roads : "works on"
     project {
         TODO project_id PK
         TODO construction_id FK "NOT NULL"
@@ -75,10 +75,10 @@ erDiagram
         TODO description
     }
 
-    contractors ||--O{ contracts : "has"
-    contracts }|--|| project : "work on"
+    contractors ||--O{ contracts : "own"
+    contracts }|--|| project : "related"
     staff ||--o| contracts : "manageing"
-    role_history }|--o| contracts : "managed"
+    contracts }|--o| role_history : "managed by"
     contractors {
         TODO contractor_id PK
         TODO name "NOT NULL"
@@ -86,7 +86,7 @@ erDiagram
         TODO contact_details "NOT NULL"
     }
     contracts {
-        TODO contract_id PK
+        TODO contract_number PK
         TODO contractor_id FK "NOT NULL"
         TODO project_id FK "NOT NULL"
         TODO managed_by FK "NOT NULL"

@@ -1,0 +1,99 @@
+---
+title: Wellington Transport
+---
+
+erDiagram
+    roads }o--|| category : "has"
+    roads |o--o{ roads : "is a section of"
+    roads }o--|| location : "starts at"
+    roads }o--|| location : "ends at"
+    roads {
+        TODO road_id PK
+        TODO road_name "NOT NULL"
+        TODO description
+        TODO category_id FK "NOT NULL"
+        TODO section_of FK
+        TODO length "NOT NULL"
+        TODO start_location FK "NOT NULL"
+        TODO end_location FK "NOT NULL"
+    }
+    category {
+        TODO category_id PK
+        TODO description UK "NOT NULL"
+    }
+    location {
+        TODO location_id PK
+        TODO name
+        TODO latitude "NOT NULL"
+        TODO longitude "NOT NULL"
+        TODO description
+    }
+
+    role |o--o{ staff : "is assigned to"
+    role_history }o--|| staff : "was assigned to"
+    staff }|--o| project : "work on"
+    role_history }|--|| project : "worked on"
+    role |o--o{ role_history : "is in"
+    project ||--|{ construction_site : "work on"
+    construction_site }o--|| roads : "involve"
+    project {
+        TODO project_id PK
+        TODO construction_id FK "NOT NULL"
+        TODO name "NOT NULL"
+        TODO description
+        date date_started "NOT NULL"
+        date date_completed
+    }
+    construction_site {
+        TODO construction_id PK
+        TODO road_id PK, FK "NOT NULL"
+    }
+    staff {
+        TODO staff_id PK
+        TODO role_id FK
+        TODO project_id FK
+        TODO first_name "NOT NULL"
+        TODO last_name "NOT NULL"
+        date hire_date "NOT NULL"
+        date birth_date "NOT NULL"
+        TODO gender "NOT NULL"
+        TODO postal_address
+        TODO phone_number
+        TODO email
+    }
+    role {
+        TODO role_id PK
+        TODO role_title UK "NOT NULL"
+        TODO description "NOT NULL"
+    }
+    role_history {
+        TODO staff_id PK, FK
+        date start_date PK
+        date end_date
+        TODO role_id FK "NOT NULL"
+        TODO project_id FK "NOT NULL"
+        TODO description
+    }
+
+    contractors ||--O{ contracts : "has"
+    contracts }|--|| project : "work on"
+    staff ||--o| contracts : "manageing"
+    role_history }|--o| contracts : "managed"
+    contractors {
+        TODO contractor_id PK
+        TODO name "NOT NULL"
+        TODO postal_address "NOT NULL"
+        TODO contact_details "NOT NULL"
+    }
+    contracts {
+        TODO contract_id PK
+        TODO contractor_id FK "NOT NULL"
+        TODO project_id FK "NOT NULL"
+        TODO managed_by FK "NOT NULL"
+        TODO name "NOT NULL"
+        TODO description
+        TODO estimated_cost "NOT NULL"
+        TODO actual_cost
+        date start_date "NOT NULL"
+        date end_date
+    }

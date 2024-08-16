@@ -34,8 +34,7 @@ erDiagram
     staff }|--o| project : "works on"
     role_history }|--|| project : "has"
     role |o--o{ role_history : "is in"
-    project ||--|{ construction_site : "involves"
-    construction_site }o--|| roads : "works on"
+    project }o--|| roads : "involves"
     project {
         TODO project_id PK
         TODO construction_id FK "NOT NULL"
@@ -43,10 +42,7 @@ erDiagram
         TODO description
         date date_started "NOT NULL"
         date date_completed
-    }
-    construction_site {
-        TODO construction_id PK
-        TODO road_id PK, FK "NOT NULL"
+        TODO road_id FK
     }
     staff {
         TODO staff_id PK

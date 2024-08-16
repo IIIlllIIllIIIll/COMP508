@@ -42,6 +42,7 @@ erDiagram
         TODO description
         date date_started "NOT NULL"
         date date_completed
+        TODO road_id FK
     }
     staff {
         TODO staff_id PK

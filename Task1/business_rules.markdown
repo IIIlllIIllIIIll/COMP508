@@ -1,43 +1,43 @@
 # Wellington Transport
 
-1.	Each Road Must be Classified as one Category
-2.	Each Category may Classify many Roads.
+1. Each road must be classified as one category.
+2. Each category may classify many roads.
 
-3.	Each Road May Contain one or more Road.
-4.	Each Road May Contain in many other Roads.  
+3. Each road may contain one or more road.
+4. Each road may contain in many other roads.
 
-5.	Each Road Must Start at only one Location.
-6.	Each Location May be the starting point for many Roads.
+5. Each road must start at only one location.
+6. Each location may be the starting point for many roads.
 
-7.	Each Road Must end at only one Location.
-8.	Each Location May be the endpoint for many Roads.
+7. Each road must end at only one location.
+8. Each location may be the endpoint for many roads.
 
-9.	Each Role May be assigned to many Staff.
-10.	Each Staff Member May be assigned to only one Role.
+9. Each role may be assigned to many staff.
+10. Each staff member may be assigned to only one role.
 
-11.	Each Role - History Must assign only one Staff.
-12.	Each Staff Member May have many Role - Histories.
+11. Each role history must assign only one staff.
+12. Each staff member may have many role histories.
 
-13.	Each Staff May work on many Projects.
-14.	Each Project Must have many Staff working on it.
+13. Each staff may work on many projects.
+14. Each project must have many staff working on it.
 
-15.	Each Role - History Must be assigned to only one Project.
-16.	Each Project May have many Role - Histories assigned to it.
+15. Each role history must be assigned to only one project.
+16. Each project may have many role histories assigned to it.
 
-17.	Each Role May have many Role - Histories.
-18.	Each Role – History Must belong to only one Role.
+17. Each role may have many role histories.
+18. Each role history must belong to only one role.
 
-19.	Each Project Must involve at least one Road.
-20.	Each Road May be involved in many Projects.
+19. Each project must involve at least one road.
+20. Each road may be involved in many projects.
 
-21.	Each Contractor May own many Contracts.
-22.	Each Contract Must belong to only one Contractor.
+21. Each contractor may own many contracts.
+22. Each contract must belong to only one contractor.
 
-23.	Each Contract Must cover only one Project.
-24.	Each Project May be covered by many Contracts.
+23. Each contract must cover only one project.
+24. Each project may be covered by many contracts.
 
-25.	Each Staff Member May manage many Contracts.
-26.	Each Contract Must be managed by one Staff Member.
+25. Each staff member may manage many contracts.
+26. Each contract must be managed by one staff member.
 
-27.	Each Contract may manage many Role -Histories.
-28.	Each Role - History must be managed by one Contract.
+27. Each contract may manage many role histories.
+28. Each role history must be managed by one contract.

@@ -73,7 +73,7 @@ erDiagram
     contractor ||--O{ contract : "own"
     contract }|--|| project : "cover"
     staff ||--o| contract : "manage"
-    contract }|--o| role_history : "manage"
+    contract |o--|{ role_history : "manage"
     contractor {
         TODO contractor_id PK
         TODO name

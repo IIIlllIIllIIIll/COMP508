@@ -52,7 +52,11 @@ erDiagram
         date hire_date
         date birth_date
         TODO gender
-        TODO postal_address "Nullable"
+        TODO street_address "Nullable"
+        TODO city "Nullable"
+        TODO province "Nullable"
+        TODO country "Nullable"
+        TODO postal_code "Nullable"
         TODO phone_number "Nullable"
         TODO email "Nullable"
     }
@@ -77,8 +81,13 @@ erDiagram
     contractor {
         TODO contractor_id PK
         TODO name
-        TODO postal_address
-        TODO contact_details
+        TODO street_address "Nullable"
+        TODO city "Nullable"
+        TODO province "Nullable"
+        TODO country "Nullable"
+        TODO postal_code "Nullable"
+        TODO phone_number "Nullable"
+        TODO email "Nullable"
     }
     contract {
         TODO contract_number PK

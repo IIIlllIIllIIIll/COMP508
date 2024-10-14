@@ -19,7 +19,7 @@ DROP TABLE contract CASCADE CONSTRAINTS;
 DROP TABLE role_history CASCADE CONSTRAINTS;
 
 CREATE TABLE category (
-    category_id NUMBER(16),
+    category_id VARCHAR2(16),
     description VARCHAR2(64)
         CONSTRAINT category_description_nn NOT NULL,
     CONSTRAINT category_pk PRIMARY KEY ( category_id ),
@@ -27,7 +27,7 @@ CREATE TABLE category (
 );
 
 CREATE TABLE location (
-    location_id NUMBER(16),
+    location_id VARCHAR2(16),
     name        VARCHAR2(64),
     latitude    NUMBER
         CONSTRAINT location_latitude_nn NOT NULL,
@@ -40,18 +40,18 @@ CREATE TABLE location (
 );
 
 CREATE TABLE road (
-    road_id        NUMBER(16),
+    road_id        VARCHAR2(16),
     road_name      VARCHAR2(64)
         CONSTRAINT road_name_nn NOT NULL,
     description    VARCHAR2(64),
-    category_id    NUMBER(16)
+    category_id    VARCHAR2(16)
         CONSTRAINT road_category_id_nn NOT NULL,
-    section_of     NUMBER(16),
+    section_of     VARCHAR2(16),
     length         NUMBER(8)
         CONSTRAINT road_length_nn NOT NULL,
-    start_location NUMBER(16)
+    start_location VARCHAR2(16)
         CONSTRAINT road_start_location_nn NOT NULL,
-    end_location   NUMBER(16)
+    end_location   VARCHAR2(16)
         CONSTRAINT road_end_location_nn NOT NULL,
     CONSTRAINT road_pk PRIMARY KEY ( road_id ),
     CONSTRAINT road_category_id_fk FOREIGN KEY ( category_id )
@@ -65,7 +65,7 @@ CREATE TABLE road (
 );
 
 CREATE TABLE role (
-    role_id     NUMBER(16),
+    role_id     VARCHAR2(16),
     role_title  VARCHAR2(64)
         CONSTRAINT role_title_nn NOT NULL,
     description VARCHAR2(64),
@@ -74,7 +74,7 @@ CREATE TABLE role (
 );
 
 CREATE TABLE project (
-    project_id     NUMBER(16),
+    project_id     VARCHAR2(16),
     name           VARCHAR2(64)
         CONSTRAINT project_name_nn NOT NULL,
     description    VARCHAR2(64),
@@ -85,8 +85,8 @@ CREATE TABLE project (
 );
 
 CREATE TABLE project_road (
-    project_id NUMBER(16),
-    road_id    NUMBER(16),
+    project_id VARCHAR2(16),
+    road_id    VARCHAR2(16),
     CONSTRAINT project_road_pk PRIMARY KEY ( project_id,
                                              road_id ),
     CONSTRAINT project_road_project_id_fk FOREIGN KEY ( project_id )
@@ -96,7 +96,7 @@ CREATE TABLE project_road (
 );
 
 CREATE TABLE staff (
-    staff_id       NUMBER(16),
+    staff_id       VARCHAR2(16),
     first_name     VARCHAR2(16)
         CONSTRAINT staff_first_name_nn NOT NULL,
     last_name      VARCHAR2(16)
@@ -118,7 +118,7 @@ CREATE TABLE staff (
 );
 
 CREATE TABLE contractor (
-    contractor_id  NUMBER(16),
+    contractor_id  VARCHAR2(16),
     name           VARCHAR2(64)
         CONSTRAINT contractor_name_nn NOT NULL,
     street_address VARCHAR2(32),
@@ -132,12 +132,12 @@ CREATE TABLE contractor (
 );
 
 CREATE TABLE contract (
-    contract_number NUMBER(16),
-    contractor_id   NUMBER(16)
+    contract_number VARCHAR2(16),
+    contractor_id   VARCHAR2(16)
         CONSTRAINT contract_contractor_id_nn NOT NULL,
-    project_id      NUMBER(16)
+    project_id      VARCHAR2(16)
         CONSTRAINT contract_project_id_nn NOT NULL,
-    manager_id      NUMBER(16)
+    manager_id      VARCHAR2(16)
         CONSTRAINT contract_manager_id_nn NOT NULL,
     name            VARCHAR2(64)
         CONSTRAINT contract_name_nn NOT NULL,
@@ -158,13 +158,13 @@ CREATE TABLE contract (
 );
 
 CREATE TABLE role_history (
-    staff_id        NUMBER(16),
+    staff_id        VARCHAR2(16),
     start_date      DATE,
     end_date        DATE,
-    role_id         NUMBER(16)
+    role_id         VARCHAR2(16)
         CONSTRAINT role_history_role_id_nn NOT NULL,
     description     VARCHAR2(16),
-    contract_number NUMBER(16),
+    contract_number VARCHAR2(16),
     CONSTRAINT role_history_pk PRIMARY KEY ( staff_id,
                                              start_date ),
     CONSTRAINT role_history_staff_id_fk FOREIGN KEY ( staff_id )

@@ -26,6 +26,8 @@ CREATE TABLE category (
     CONSTRAINT category_description_uk UNIQUE ( description )
 );
 
+DESCRIBE category;
+
 CREATE TABLE location (
     location_id VARCHAR2(16),
     name        VARCHAR2(64),
@@ -38,6 +40,8 @@ CREATE TABLE location (
     CONSTRAINT location_latitude_longitude_uk UNIQUE ( latitude,
                                                        longitude )
 );
+
+DESCRIBE location;
 
 CREATE TABLE road (
     road_id        VARCHAR2(16),
@@ -64,6 +68,8 @@ CREATE TABLE road (
         REFERENCES location ( location_id )
 );
 
+DESCRIBE road;
+
 CREATE TABLE role (
     role_id     VARCHAR2(16),
     role_title  VARCHAR2(64)
@@ -72,6 +78,8 @@ CREATE TABLE role (
     CONSTRAINT role_pk PRIMARY KEY ( role_id ),
     CONSTRAINT role_title_uk UNIQUE ( role_title )
 );
+
+DESCRIBE role;
 
 CREATE TABLE project (
     project_id     VARCHAR2(16),
@@ -84,6 +92,8 @@ CREATE TABLE project (
     CONSTRAINT project_pk PRIMARY KEY ( project_id )
 );
 
+DESCRIBE project;
+
 CREATE TABLE project_road (
     project_id VARCHAR2(16),
     road_id    VARCHAR2(16),
@@ -94,6 +104,8 @@ CREATE TABLE project_road (
     CONSTRAINT project_road_road_id_fk FOREIGN KEY ( road_id )
         REFERENCES road ( road_id )
 );
+
+DESCRIBE project_road;
 
 CREATE TABLE staff (
     staff_id       VARCHAR2(16),
@@ -117,6 +129,8 @@ CREATE TABLE staff (
     CONSTRAINT staff_pk PRIMARY KEY ( staff_id )
 );
 
+DESCRIBE staff;
+
 CREATE TABLE contractor (
     contractor_id  VARCHAR2(16),
     name           VARCHAR2(64)
@@ -130,6 +144,8 @@ CREATE TABLE contractor (
     email          VARCHAR2(30),
     CONSTRAINT contractor_pk PRIMARY KEY ( contractor_id )
 );
+
+DESCRIBE contractor;
 
 CREATE TABLE contract (
     contract_number VARCHAR2(16),
@@ -157,6 +173,8 @@ CREATE TABLE contract (
         REFERENCES project ( project_id )
 );
 
+DESCRIBE contract;
+
 CREATE TABLE role_history (
     staff_id        VARCHAR2(16),
     start_date      DATE,
@@ -174,3 +192,5 @@ CREATE TABLE role_history (
     CONSTRAINT role_history_contract_number_fk FOREIGN KEY ( contract_number )
         REFERENCES contract ( contract_number )
 );
+
+DESCRIBE role_history;

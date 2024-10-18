@@ -1,21 +1,12 @@
 DROP TABLE category CASCADE CONSTRAINTS;
-
 DROP TABLE location CASCADE CONSTRAINTS;
-
 DROP TABLE road CASCADE CONSTRAINTS;
-
 DROP TABLE role CASCADE CONSTRAINTS;
-
 DROP TABLE project CASCADE CONSTRAINTS;
-
 DROP TABLE project_road CASCADE CONSTRAINTS;
-
 DROP TABLE staff CASCADE CONSTRAINTS;
-
 DROP TABLE contractor CASCADE CONSTRAINTS;
-
 DROP TABLE contract CASCADE CONSTRAINTS;
-
 DROP TABLE role_history CASCADE CONSTRAINTS;
 
 CREATE TABLE category (
@@ -25,7 +16,6 @@ CREATE TABLE category (
     CONSTRAINT category_pk PRIMARY KEY ( category_id ),
     CONSTRAINT category_description_uk UNIQUE ( description )
 );
-
 DESCRIBE category;
 
 CREATE TABLE location (
@@ -37,10 +27,8 @@ CREATE TABLE location (
         CONSTRAINT location_longitude_nn NOT NULL,
     description VARCHAR2(64),
     CONSTRAINT location_pk PRIMARY KEY ( location_id ),
-    CONSTRAINT location_latitude_longitude_uk UNIQUE ( latitude,
-                                                       longitude )
+    CONSTRAINT location_latitude_longitude_uk UNIQUE ( latitude, longitude )
 );
-
 DESCRIBE location;
 
 CREATE TABLE road (
@@ -67,7 +55,6 @@ CREATE TABLE road (
     CONSTRAINT road_end_location_fk FOREIGN KEY ( end_location )
         REFERENCES location ( location_id )
 );
-
 DESCRIBE road;
 
 CREATE TABLE role (
@@ -78,7 +65,6 @@ CREATE TABLE role (
     CONSTRAINT role_pk PRIMARY KEY ( role_id ),
     CONSTRAINT role_title_uk UNIQUE ( role_title )
 );
-
 DESCRIBE role;
 
 CREATE TABLE project (
@@ -91,20 +77,17 @@ CREATE TABLE project (
     date_completed DATE,
     CONSTRAINT project_pk PRIMARY KEY ( project_id )
 );
-
 DESCRIBE project;
 
 CREATE TABLE project_road (
     project_id VARCHAR2(16),
     road_id    VARCHAR2(16),
-    CONSTRAINT project_road_pk PRIMARY KEY ( project_id,
-                                             road_id ),
+    CONSTRAINT project_road_pk PRIMARY KEY ( project_id, road_id ),
     CONSTRAINT project_road_project_id_fk FOREIGN KEY ( project_id )
         REFERENCES project ( project_id ),
     CONSTRAINT project_road_road_id_fk FOREIGN KEY ( road_id )
         REFERENCES road ( road_id )
 );
-
 DESCRIBE project_road;
 
 CREATE TABLE staff (
@@ -128,7 +111,6 @@ CREATE TABLE staff (
     email          VARCHAR2(30),
     CONSTRAINT staff_pk PRIMARY KEY ( staff_id )
 );
-
 DESCRIBE staff;
 
 CREATE TABLE contractor (
@@ -144,7 +126,6 @@ CREATE TABLE contractor (
     email          VARCHAR2(30),
     CONSTRAINT contractor_pk PRIMARY KEY ( contractor_id )
 );
-
 DESCRIBE contractor;
 
 CREATE TABLE contract (
@@ -172,7 +153,6 @@ CREATE TABLE contract (
     CONSTRAINT contract_project_id_fk FOREIGN KEY ( project_id )
         REFERENCES project ( project_id )
 );
-
 DESCRIBE contract;
 
 CREATE TABLE role_history (
@@ -192,5 +172,4 @@ CREATE TABLE role_history (
     CONSTRAINT role_history_contract_number_fk FOREIGN KEY ( contract_number )
         REFERENCES contract ( contract_number )
 );
-
 DESCRIBE role_history;

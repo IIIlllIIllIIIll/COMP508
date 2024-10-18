@@ -109,7 +109,8 @@ CREATE TABLE staff (
     postal_code    VARCHAR2(6),
     phone_number   VARCHAR2(16),
     email          VARCHAR2(30),
-    CONSTRAINT staff_pk PRIMARY KEY ( staff_id )
+    CONSTRAINT staff_pk PRIMARY KEY ( staff_id ),
+    CONSTRAINT staff_gender_ck CHECK (gender IN ('not known','male','female','not applicable')) -- ISO/IEC 5218:2022
 );
 DESCRIBE staff;
 
